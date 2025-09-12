@@ -326,6 +326,7 @@ M.start_presentation = function(opts)
         local title = padding .. slide.title
         vim.api.nvim_buf_set_lines(state.floats.header.buf, 0, -1, false, { title })
         vim.api.nvim_buf_set_lines(state.floats.body.buf, 0, -1, false, slide.body)
+        require("markview").render(state.floats.body.buf, { enable = true })
 
         local footer = string.format("  %d / %d | %s", state.current_slide, #state.parsed.slides, state.title)
         vim.api.nvim_buf_set_lines(state.floats.footer.buf, 0, -1, false, { footer })
